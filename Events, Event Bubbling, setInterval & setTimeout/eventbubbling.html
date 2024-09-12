@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .child{
+            background-color: blue;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+        }
+        .childcontainer{
+            background-color: pink;
+            padding: 20px;
+            margin: 20px;
+        }
+        .container{
+            background-color: green;
+            padding: 20px;
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="childcontainer">
+            <div class="child">
+                I am a child
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.querySelector(".child").addEventListener("contextmenu", ()=>{
+            e.stopPropagation()
+            alert("child was clicked")
+        })
+
+        document.querySelector(".childcontainer").addEventListener("contextmenu", ()=>{
+            e.stopPropagation()
+            alert("childcontainer was clicked")
+        })
+        
+        document.querySelector(".container").addEventListener("contextmenu", ()=>{
+            e.stopPropagation()
+            alert("container was clicked")
+        })
+
+        function getRandomColor(){
+        let val1 = Math.ceil(0 + Math.random()* 255);
+        let val2 = Math.ceil(0 + Math.random()* 255);
+        let val3 = Math.ceil(0 + Math.random()* 255);
+        return `rgb(${val1}, ${val2}, ${val3})`
+        }
+
+        let a = setInterval(() => {
+            document.querySelector(".container").style.background = "getRandomColor()"
+        }, 200);
+
+        console.log(a)
+        
+        // let a = setTimeout(() => {
+        //     document.querySelector(".childcontainer").style.background = "getRandomColor()"
+        // }, 2000);
+
+        // console.log(a)
+    </script>
+</body>
+</html>
